@@ -1,0 +1,43 @@
+[
+  {
+    "action": "StartBrowser",
+    "id": "StartBrowser"
+  },
+  {
+    "action": "Enter",
+    "id": "EnterText",
+    "ui": {
+      "way": "name",
+      "data": "userName"
+    },
+    "data": "mercury"
+  },
+  {
+    "action": "Enter",
+    "id": "EnterText",
+    "ui": {
+      "way": "name",
+      "data": "password"
+    },
+    "data": "mercury"
+  },
+  {
+    "action": "Click",
+    "ui": {
+      "way": "name",
+      "data": "login"
+    },
+    "data": ""
+  },
+  {
+    "action": "Wait",
+    "data": "5",
+    "id": "Wait5Seconds"
+  },
+  {
+    "action": "CloseBrowser",
+    "id": "CloseBrowser"
+  }
+]
+
+

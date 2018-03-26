@@ -1,0 +1,6 @@
+[
+  {"action": "startURL", "data":"http://newtours.demoaut.com/"},
+  {"action": "enter", "object":{"way":"name", "data":"userName"}, "data":"mercury"},
+  {"action": "enter", "object":{"way":"name", "data":"password"}, "data":"mercury"},
+  {"action": "click", "object":{"way":"name", "data":"login"}, "data":""}
+]
