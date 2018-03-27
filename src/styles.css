@@ -2,3 +2,7 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import url('https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.6.0/css/okta-sign-in.min.css');
 @import url('https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.6.0/css/okta-theme.css');
+
+.toolbar-spacer {
+    flex: 1 1 auto;
+  }

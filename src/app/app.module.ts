@@ -25,6 +25,8 @@ import { AppComponent } from './app.component';
 import { ProtectedComponent } from './protected/protected.component';
 import { LoginComponent } from './login/login.component';
 import { SearchComponent } from './search/search.component';
+import { EventBusService } from './event-bus.service';
+import { Okta } from './okta.service';
 
 const config = {
   issuer: 'https://dev-897297.oktapreview.com/oauth2/default',
@@ -77,6 +79,7 @@ const appRoutes: Routes = [
     MatTooltipModule, MatFormFieldModule, MatExpansionModule, MatStepperModule,
     BrowserAnimationsModule
   ],
+  providers: [EventBusService, Okta],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
