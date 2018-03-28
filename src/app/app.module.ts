@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import {
   MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatPaginatorModule,
   MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule,
@@ -22,15 +23,14 @@ import {
 } from '@okta/okta-angular';
 
 import { AppComponent } from './app.component';
-import { ProtectedComponent } from './protected/protected.component';
-import { LoginComponent } from './login/login.component';
 import { SearchComponent } from './search/search.component';
 import { EventBusService } from './event-bus.service';
 import { Okta } from './okta.service';
+import { environment } from '../environments/environment';
 
 const config = {
   issuer: 'https://dev-897297.oktapreview.com/oauth2/default',
-  redirectUri: 'http://localhost:4200/implicit/callback',
+  redirectUri: 'https://localhost:4200/implicit/callback',
   clientId: '0oadwdhzx5bvaGql20h7'
 };
 
@@ -43,26 +43,12 @@ const appRoutes: Routes = [
   {
     path: 'implicit/callback',
     component: OktaCallbackComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'protected',
-    component: ProtectedComponent,
-    canActivate: [ OktaAuthGuard ],
-    data: {
-      onAuthRequired
-    }
   }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    ProtectedComponent,
     SearchComponent
   ],
   imports: [
@@ -77,7 +63,7 @@ const appRoutes: Routes = [
     MatRadioModule, MatSelectModule, MatSidenavModule, MatSliderModule, MatSortModule,
     MatSlideToggleModule, MatSnackBarModule, MatTableModule, MatTabsModule, MatToolbarModule,
     MatTooltipModule, MatFormFieldModule, MatExpansionModule, MatStepperModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule, ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [EventBusService, Okta],
   bootstrap: [AppComponent]

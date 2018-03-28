@@ -23,27 +23,5 @@
           "/assets/**"
         ]
       }
-    }],
-    "dataGroups": [{
-      "name": "api-freshness",
-      "urls": [
-        "/data/**"
-      ],
-      "cacheConfig": {
-        "maxSize": 100,
-        "maxAge": "1h",
-        "timeout": "300s",
-        "strategy": "freshness"
-      }
-    }, {
-      "name": "api-performance",
-      "urls": [
-        "/"
-      ],
-      "cacheConfig": {
-        "maxSize": 100,
-        "maxAge": "1d",
-        "strategy": "performance"
-      }
     }]
   }

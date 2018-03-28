@@ -2,6 +2,7 @@
 
 
 <div *ngIf="!user" id="okta-login-container"></div>
+<div *ngIf="user">
 <mat-toolbar>
   <mat-toolbar-row>
     <span>A Test</span>
@@ -30,26 +31,24 @@
     </mat-menu>
 
     <span class="toolbar-spacer"></span>
-    <button matTooltip="Login" *ngIf="!user" routerLink="/login">
-      <mat-icon>account_circle</mat-icon>
-    </button>
-    <button [matTooltip]="userName" mat-icon-button [matMenuTriggerFor]="menu" *ngIf="user">
+    <button class="mat-raised-button"  mat-icon-button [matMenuTriggerFor]="menu" >
       <mat-icon>account_box</mat-icon>
     </button>
   </mat-toolbar-row>
 </mat-toolbar>
 
 <mat-tab-group>
-  <mat-tab label="Script" [disabled]="!user">
+  <mat-tab label="Script" >
     <!-- <app-search [options]="['Suite', 'Case', 'OUT', 'Data']"></app-search> -->
   </mat-tab>
-  <mat-tab label="Environment" [disabled]="!user">
+  <mat-tab label="Environment" >
     <!-- <app-search [options]="['Idle', 'Running', 'Stopped']"></app-search> -->
   </mat-tab>
-  <mat-tab label="Result" [disabled]="!user">
+  <mat-tab label="Result" >
     <!-- <app-search [options]="['Checked', 'Unchecked', 'Recent 1 day', 'Recent 1 week']"></app-search> -->
   </mat-tab>
 </mat-tab-group>
+</div>
 
 <!-- <button routerLink="/"> Home </button>
 <button *ngIf="!signIn.isAuthenticated()" routerLink="/login"> Login </button>

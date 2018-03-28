@@ -9,7 +9,7 @@ export class Okta {
     this.widget = new OktaSignIn({
       baseUrl: 'https://dev-897297.oktapreview.com',
       clientId: '0oadwdhzx5bvaGql20h7',
-      redirectUri: 'http://localhost:4200/implicit/callback',
+      redirectUri: 'https://localhost:4200/implicit/callback',
       authParams: {
         issuer: 'default'
       }
