@@ -5,7 +5,12 @@ import { Subject } from 'rxjs/Subject';
 export class EventBusService {
 
   public userId: Subject<string> = new Subject<string>();
+  public message: Subject<string> = new Subject<string>();
 
   constructor() { }
+
+  showMessage(msg: string) {
+    this.message.next(msg);
+  }
 
 }

@@ -14,6 +14,16 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
+  baseUrl = 'https://localhost:8443/';
+
+  ping() {
+    return this.http.get(this.baseUrl + 'ping')
+      .subscribe((response) => {
+        console.log(response);
+      }
+      );
+  }
+
   getSuite(id: string) {
     // this.http.get(this.baseUrl + "getSuite/"+id).subscribe{
 

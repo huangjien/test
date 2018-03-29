@@ -3,51 +3,96 @@
 
 <div *ngIf="!user" id="okta-login-container"></div>
 <div *ngIf="user">
-<mat-toolbar>
-  <mat-toolbar-row>
-    <span>A Test</span>
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <span>A Test</span>
 
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-        <mat-icon>shop_two</mat-icon>
-        <span>New Suite</span>
-      </button>
-      <button mat-menu-item>
-        <mat-icon>next_week</mat-icon>
-        <span>New Case</span>
-      </button>
-      <button mat-menu-item>
-        <mat-icon>picture_in_picture</mat-icon>
-        <span>New UI</span>
-      </button>
-      <button mat-menu-item>
-        <mat-icon>library_books</mat-icon>
-        <span>New Data</span>
-      </button>
-      <button mat-menu-item (click)="logout()">
-        <mat-icon>exit_to_app</mat-icon>
-        <span>Logout</span>
-      </button>
-    </mat-menu>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="ping()">
+          <b>{{user}}</b>
+        </button>
+        <mat-divider></mat-divider>
 
-    <span class="toolbar-spacer"></span>
-    <button class="mat-raised-button"  mat-icon-button [matMenuTriggerFor]="menu" >
-      <mat-icon>account_box</mat-icon>
-    </button>
-  </mat-toolbar-row>
-</mat-toolbar>
+        <button mat-menu-item>
+          <mat-icon>shop_two</mat-icon>
+          <span>New Suite</span>
+        </button>
+        <button mat-menu-item (click)="test('New Case')">
+          <mat-icon>next_week</mat-icon>
+          <span>New Case</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>picture_in_picture</mat-icon>
+          <span>New UI</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>library_books</mat-icon>
+          <span>New Data</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
 
-<mat-tab-group>
-  <mat-tab label="Script" >
-    <!-- <app-search [options]="['Suite', 'Case', 'OUT', 'Data']"></app-search> -->
-  </mat-tab>
-  <mat-tab label="Environment" >
-    <!-- <app-search [options]="['Idle', 'Running', 'Stopped']"></app-search> -->
-  </mat-tab>
-  <mat-tab label="Result" >
-    <!-- <app-search [options]="['Checked', 'Unchecked', 'Recent 1 day', 'Recent 1 week']"></app-search> -->
-  </mat-tab>
-</mat-tab-group>
+      <span class="toolbar-spacer"></span>
+      <mat-form-field>
+      <mat-select placeholder="Filter" multiple>
+        <mat-option>-- None --</mat-option>
+        <mat-optgroup [label]="Script">
+          <mat-option value="Suite">Suite</mat-option>
+          <mat-option value="Case">Case</mat-option>
+          <mat-option value="Data">Data</mat-option>
+        </mat-optgroup>
+        <mat-optgroup [label]="Environment">
+          <mat-option value="Idle">Idle</mat-option>
+          <mat-option value="Running">Running</mat-option>
+        </mat-optgroup>
+        <mat-optgroup [label]="Result">
+          <mat-option value="24h">Last 24 Hours</mat-option>
+          <mat-option value="-1w">From Last Week</mat-option>
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Search" (keyup.enter)="onEnter()" required minlength="3" [(ngModel)]="searchString"
+        />
+        <button mat-button *ngIf="searchString" matSuffix mat-icon-button aria-label="Clear" (click)="clear()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <button mat-button *ngIf="searchString" matSuffix mat-icon-button aria-label="Search" (click)="search()">
+          <mat-icon>search</mat-icon>
+        </button>
+
+      </mat-form-field>
+      <span>&nbsp;&nbsp;</span>
+      <button class="mat-raised-button" mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_box</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="row" *ngIf="results?.length > 0">
+    <!-- <mat-accordion>
+      <mat-expansion-panel> -->
+    <ng-container *ngFor="let result of results">
+      <app-simple-view [data]="result"></app-simple-view>
+    </ng-container>
+    <!-- </mat-expansion-panel>
+    </mat-accordion> -->
+  </div>
+
+  <mat-tab-group>
+    <mat-tab label="Script">
+      <!-- <app-search [options]="['Suite', 'Case', 'OUT', 'Data']"></app-search> -->
+    </mat-tab>
+    <mat-tab label="Environment">
+      <!-- <app-search [options]="['Idle', 'Running', 'Stopped']"></app-search> -->
+    </mat-tab>
+    <mat-tab label="Result">
+      <!-- <app-search [options]="['Checked', 'Unchecked', 'Recent 1 day', 'Recent 1 week']"></app-search> -->
+    </mat-tab>
+  </mat-tab-group>
+
 </div>
 
 <!-- <button routerLink="/"> Home </button>

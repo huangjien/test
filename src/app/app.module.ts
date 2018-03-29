@@ -7,6 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { FormsModule } from '@angular/forms';
 import {
   MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatPaginatorModule,
   MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule,
@@ -27,6 +28,15 @@ import { SearchComponent } from './search/search.component';
 import { EventBusService } from './event-bus.service';
 import { Okta } from './okta.service';
 import { environment } from '../environments/environment';
+import { SuiteComponent } from './suite/suite.component';
+import { CaseComponent } from './case/case.component';
+import { UiComponent } from './ui/ui.component';
+import { DataComponent } from './data/data.component';
+import { EnvComponent } from './env/env.component';
+import { ResultComponent } from './result/result.component';
+import { DynamicComponent } from './dynamic/dynamic.component';
+import { DataService } from './data.service';
+import { SimpleViewComponent } from './simple-view/simple-view.component';
 
 const config = {
   issuer: 'https://dev-897297.oktapreview.com/oauth2/default',
@@ -49,7 +59,15 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent
+    SearchComponent,
+    SuiteComponent,
+    CaseComponent,
+    UiComponent,
+    DataComponent,
+    EnvComponent,
+    ResultComponent,
+    DynamicComponent,
+    SimpleViewComponent
   ],
   imports: [
     BrowserModule,
@@ -62,10 +80,10 @@ const appRoutes: Routes = [
     MatListModule, MatMenuModule, MatProgressBarModule, MatProgressSpinnerModule,
     MatRadioModule, MatSelectModule, MatSidenavModule, MatSliderModule, MatSortModule,
     MatSlideToggleModule, MatSnackBarModule, MatTableModule, MatTabsModule, MatToolbarModule,
-    MatTooltipModule, MatFormFieldModule, MatExpansionModule, MatStepperModule,
+    MatTooltipModule, MatFormFieldModule, MatExpansionModule, MatStepperModule, FormsModule,
     BrowserAnimationsModule, ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
-  providers: [EventBusService, Okta],
+  providers: [EventBusService, Okta, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
