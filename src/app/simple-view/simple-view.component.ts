@@ -27,6 +27,10 @@ export class SimpleViewComponent implements OnInit {
     this.icon = Utils.getIcon(this.type);
   }
 
+  edit() {
+    alert(this.id);
+  }
+
   // load() {
   //   this.globals.setContent(this.data);
   //   // this.globals.showMessage(this.id);

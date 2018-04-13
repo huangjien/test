@@ -37,6 +37,7 @@ import { ResultComponent } from './result/result.component';
 import { DynamicComponent } from './dynamic/dynamic.component';
 import { DataService } from './data.service';
 import { SimpleViewComponent } from './simple-view/simple-view.component';
+import { SettingComponent } from './setting/setting.component';
 
 const config = {
   issuer: 'https://dev-897297.oktapreview.com/oauth2/default',
@@ -53,6 +54,18 @@ const appRoutes: Routes = [
   {
     path: 'implicit/callback',
     component: OktaCallbackComponent
+  },
+  {
+    path: 'environments',
+    component: EnvComponent
+  },
+  {
+    path: 'results',
+    component: ResultComponent
+  },
+  {
+    path: 'settings',
+    component: SettingComponent
   }
 ];
 
@@ -67,7 +80,8 @@ const appRoutes: Routes = [
     EnvComponent,
     ResultComponent,
     DynamicComponent,
-    SimpleViewComponent
+    SimpleViewComponent,
+    SettingComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 <div>
-  <h3>Environments</h3>
+  <h3>Settings</h3>
   <mat-form-field>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
   </mat-form-field>
@@ -18,9 +18,9 @@
       <mat-cell *matCellDef="let row"> {{row.type}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="status">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> STATUS </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.status}} </mat-cell>
+    <ng-container matColumnDef="value">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> VALUE </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.value}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="name">
@@ -33,10 +33,15 @@
       <mat-cell *matCellDef="let row"> {{row.description}} </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="category">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> CATEGORY </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.category}} </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef> ACTIONS </mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <button (click)="more(row.id)">More</button>
+        <button (click)="edit(row.id)">Edit</button>
       </mat-cell>
     </ng-container>
 
