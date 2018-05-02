@@ -14,10 +14,10 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl = 'https://localhost:8443/';
+  baseUrl = 'https://localhost:8443/api/v1.0';
 
   ping() {
-    return this.http.get(this.baseUrl + 'ping')
+    return this.http.get(this.baseUrl + '/ping')
       .subscribe((response) => {
         console.log(response);
       }

@@ -89,7 +89,8 @@ export class AppComponent implements OnInit {
   search() {
     // TODO test with fix data now
     this.results = [{id: 'xxxx', type: 'Data', name: 'XXX', description: 'Blalalalalala'},
-    {id: 'yyyy', type: 'Data', name: 'YYYY', description: 'Blalalalalala'}];
+    {id: 'yyyy', type: 'Data', name: 'YYYY', description: 'Blalalalalala'},
+    {id: 'cccc', type: 'Case', name: 'CCCC', description: 'Blalalalalala'}];
   }
 
   test(msg: string) {

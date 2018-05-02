@@ -38,6 +38,9 @@ import { DynamicComponent } from './dynamic/dynamic.component';
 import { DataService } from './data.service';
 import { SimpleViewComponent } from './simple-view/simple-view.component';
 import { SettingComponent } from './setting/setting.component';
+import { DragService } from './drag-service';
+import { DraggableDirective } from './draggable.directive';
+import { DropTargetDirective } from './drop-target.directive';
 
 const config = {
   issuer: 'https://dev-897297.oktapreview.com/oauth2/default',
@@ -81,6 +84,8 @@ const appRoutes: Routes = [
     ResultComponent,
     DynamicComponent,
     SimpleViewComponent,
+    DraggableDirective,
+    DropTargetDirective,
     SettingComponent
   ],
   imports: [
@@ -97,7 +102,7 @@ const appRoutes: Routes = [
     MatTooltipModule, MatFormFieldModule, MatExpansionModule, MatStepperModule, FormsModule,
     BrowserAnimationsModule, ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
-  providers: [EventBusService, Okta, DataService],
+  providers: [EventBusService, Okta, DataService, DragService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

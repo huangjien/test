@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import Utils from '../shared/utils';
+import { DragService } from '../drag-service';
+import { DraggableDirective } from '../draggable.directive';
+import { DropTargetDirective } from '../drop-target.directive';
 
 @Component({
   selector: 'app-simple-view',
@@ -31,11 +34,18 @@ export class SimpleViewComponent implements OnInit {
     alert(this.id);
   }
 
-  // load() {
+  onDrop(data: any) {
+    if (this.id === data['id']) {
+      alert('cannot drop to itself');
+    }
+    console.log('dropped: ' + JSON.stringify(data));
+  }
+
+  load() {
   //   this.globals.setContent(this.data);
   //   // this.globals.showMessage(this.id);
   //   this.globals.collapseSearchView();
   //   // console.log('id', this.id);
-  // }
+  }
 
 }

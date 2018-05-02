@@ -1,5 +1,6 @@
 <mat-expansion-panel hideToggle="true" (dblclick)="load()" (opened)="panelOpenState = true" (closed)="panelOpenState = false"
-  [class.mat-elevation-z2]="!panelOpenState" [class.mat-elevation-z8]="panelOpenState">
+  [class.mat-elevation-z2]="!panelOpenState" [class.mat-elevation-z8]="panelOpenState"
+  [appDraggable]="{data: data, item: type }" [appDropTarget]="{item: type}" (appDrop)="onDrop($event)" id="{{id}}">
   <mat-expansion-panel-header>
     <mat-panel-title>
       <mat-icon matTooltip="{{id}}" (click)="load()">{{icon}}</mat-icon> &nbsp;
