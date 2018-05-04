@@ -3,6 +3,9 @@ import Utils from '../shared/utils';
 import { DragService } from '../drag-service';
 import { DraggableDirective } from '../draggable.directive';
 import { DropTargetDirective } from '../drop-target.directive';
+import { DataService } from '../data.service';
+import { EventBusService } from '../event-bus.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-simple-view',
@@ -19,7 +22,7 @@ export class SimpleViewComponent implements OnInit {
   description: string;
   panelOpenState = false;
 
-  constructor() {
+  constructor(private router: Router, private eventBus: EventBusService) {
    }
 
   ngOnInit() {
@@ -31,12 +34,12 @@ export class SimpleViewComponent implements OnInit {
   }
 
   edit() {
-    alert(this.id);
+    this.router.navigate([this.type, this.id]);
   }
 
   onDrop(data: any) {
     if (this.id === data['id']) {
-      alert('cannot drop to itself');
+      this.eventBus.showMessage('Cannot drop to itself');
     }
     console.log('dropped: ' + JSON.stringify(data));
   }

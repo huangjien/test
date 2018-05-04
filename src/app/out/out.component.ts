@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Route, Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-dynamic',
-  templateUrl: './dynamic.component.html',
-  styleUrls: ['./dynamic.component.css']
+  selector: 'app-out',
+  templateUrl: './out.component.html',
+  styleUrls: ['./out.component.css']
 })
-export class DynamicComponent implements OnInit {
+export class OutComponent implements OnInit {
+
   id: string;
   constructor(private route: ActivatedRoute) { }
 
@@ -17,5 +18,4 @@ export class DynamicComponent implements OnInit {
       this.id = params.get('id');
     });
   }
-
 }

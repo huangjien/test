@@ -1,7 +1,7 @@
 // src/app/app.component.ts
 
 import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Okta } from './okta.service';
 import { EventBusService } from './event-bus.service';
@@ -27,17 +27,19 @@ export class AppComponent implements OnInit {
 
   constructor(private okta: Okta, private changeDetectorRef: ChangeDetectorRef,
     private swUpdate: SwUpdate, private eventBus: EventBusService,
-    private snackBar: MatSnackBar, private dataService: DataService) {
+    private snackBar: MatSnackBar, private dataService: DataService,
+  private router: Router) {
     this.oktaSignIn = okta.getWidget();
   }
 
   showLogin() {
     this.oktaSignIn.renderEl({ el: '#okta-login-container' }, (response) => {
       if (response.status === 'SUCCESS') {
-        console.log(response);
+        // console.log(response);
         this.user = response.claims.email;
         this.oktaSignIn.remove();
         this.changeDetectorRef.detectChanges();
+        this.router.navigate(['/']);
       }
     });
   }
@@ -71,6 +73,7 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.oktaSignIn.signOut(() => {
+      this.router.navigate(['/']);
       this.user = undefined;
       this.changeDetectorRef.detectChanges();
       this.showLogin();

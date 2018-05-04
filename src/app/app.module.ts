@@ -41,6 +41,7 @@ import { SettingComponent } from './setting/setting.component';
 import { DragService } from './drag-service';
 import { DraggableDirective } from './draggable.directive';
 import { DropTargetDirective } from './drop-target.directive';
+import { OutComponent } from './out/out.component';
 
 const config = {
   issuer: 'https://dev-897297.oktapreview.com/oauth2/default',
@@ -63,12 +64,30 @@ const appRoutes: Routes = [
     component: EnvComponent
   },
   {
-    path: 'results',
+    path: 'Result/:id',
     component: ResultComponent
   },
   {
     path: 'settings',
     component: SettingComponent
+  }
+  ,
+  {
+    path: 'OUT/:id',
+    component: OutComponent
+  }
+  ,
+  {
+    path: 'Case/:id',
+    component: CaseComponent
+  },
+  {
+    path: 'Suite/:id',
+    component: SuiteComponent
+  },
+  {
+    path: 'Data/:id',
+    component: DataComponent
   }
 ];
 
@@ -86,7 +105,8 @@ const appRoutes: Routes = [
     SimpleViewComponent,
     DraggableDirective,
     DropTargetDirective,
-    SettingComponent
+    SettingComponent,
+    OutComponent
   ],
   imports: [
     BrowserModule,

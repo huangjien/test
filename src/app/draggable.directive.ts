@@ -33,7 +33,7 @@ export class DraggableDirective {
 
         this.dragService.startDrag(item);
 
-        console.log(JSON.stringify(data));
+        // console.log(JSON.stringify(data));
         event.dataTransfer.setData('Text', JSON.stringify(data));
     }
 }
