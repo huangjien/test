@@ -22,7 +22,7 @@ import {
   OktaCallbackComponent,
   OktaAuthGuard
 } from '@okta/okta-angular';
-
+import { BaseComponent } from './base.component';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { EventBusService } from './event-bus.service';
@@ -106,6 +106,7 @@ const appRoutes: Routes = [
     DraggableDirective,
     DropTargetDirective,
     SettingComponent,
+    BaseComponent,
     OutComponent
   ],
   imports: [

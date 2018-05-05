@@ -96,16 +96,16 @@
       true,
       "allow-null-check"
     ],
-    "typedef-whitespace": [
-      true,
-      {
-        "call-signature": "nospace",
-        "index-signature": "nospace",
-        "parameter": "nospace",
-        "property-declaration": "nospace",
-        "variable-declaration": "nospace"
-      }
-    ],
+    // "typedef-whitespace": [
+    //   true,
+    //   {
+    //     "call-signature": "nospace",
+    //     "index-signature": "nospace",
+    //     "parameter": "nospace",
+    //     "property-declaration": "nospace",
+    //     "variable-declaration": "nospace"
+    //   }
+    // ],
     "typeof-compare": true,
     "unified-signatures": true,
     "variable-name": false,

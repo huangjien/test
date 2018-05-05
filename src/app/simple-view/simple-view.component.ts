@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import Utils from '../shared/utils';
 import { DragService } from '../drag-service';
 import { DraggableDirective } from '../draggable.directive';
@@ -7,6 +7,7 @@ import { DataService } from '../data.service';
 import { EventBusService } from '../event-bus.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-simple-view',
   templateUrl: './simple-view.component.html',
@@ -14,6 +15,7 @@ import { Router } from '@angular/router';
 })
 export class SimpleViewComponent implements OnInit {
 
+  @Output() isStatusChanged = new EventEmitter<boolean>();
   @Input() data;
   name: string;
   type: string;
@@ -26,14 +28,17 @@ export class SimpleViewComponent implements OnInit {
    }
 
   ngOnInit() {
+
     this.id = this.data['id'];
     this.name = this.data['name'];
     this.type = this.data['type'];
     this.description = this.data['description'];
     this.icon = Utils.getIcon(this.type);
+
   }
 
   edit() {
+    this.isStatusChanged.emit(true);
     this.router.navigate([this.type, this.id]);
   }
 
@@ -41,7 +46,7 @@ export class SimpleViewComponent implements OnInit {
     if (this.id === data['id']) {
       this.eventBus.showMessage('Cannot drop to itself');
     }
-    console.log('dropped: ' + JSON.stringify(data));
+    // console.log('dropped: ' + JSON.stringify(data));
   }
 
   load() {

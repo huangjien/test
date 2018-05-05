@@ -9,26 +9,30 @@ import { SwUpdate } from '@angular/service-worker';
 import { MatSnackBar } from '@angular/material';
 import { DataService } from './data.service';
 import { SimpleViewComponent } from './simple-view/simple-view.component';
+import { HttpClient } from '@angular/common/http';
 
 import Utils from './shared/utils';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-
+  typeList = new FormControl();
+  typeChosen: any;
   user;
   oktaSignIn;
   searchString: string;
-  results: any;
+  types = ['Suite', 'Case', 'Data', 'OUT'];
+  results: any[];
   // expand = false;
   panelOpenState = false;
 
   constructor(private okta: Okta, private changeDetectorRef: ChangeDetectorRef,
     private swUpdate: SwUpdate, private eventBus: EventBusService,
     private snackBar: MatSnackBar, private dataService: DataService,
-  private router: Router) {
+  private router: Router, private http: HttpClient) {
     this.oktaSignIn = okta.getWidget();
   }
 
@@ -87,13 +91,22 @@ export class AppComponent implements OnInit {
   clear() {
     this.searchString = '';
     this.results = [];
+    this.typeChosen = [];
   }
 
   search() {
+    // alert(this.types);
     // TODO test with fix data now
-    this.results = [{id: 'xxxx', type: 'Data', name: 'XXX', description: 'Blalalalalala'},
-    {id: 'yyyy', type: 'Data', name: 'YYYY', description: 'Blalalalalala'},
-    {id: 'cccc', type: 'Case', name: 'CCCC', description: 'Blalalalalala'}];
+    this.http.get(this.dataService.baseUrl + '/query/type:(Data Case Suite)')
+    .subscribe((response: Response) => {
+      const data = response['data'];
+      // console.log(data);
+      this.results = JSON.parse(data);
+      this.results.forEach(element => {
+        const id = element['id'];
+        this.dataService.set(id, element);
+      });
+    });
   }
 
   test(msg: string) {
@@ -101,6 +114,6 @@ export class AppComponent implements OnInit {
   }
 
   ping() {
-    this.dataService.ping();
+    console.log(this.dataService.get('0010070000001'));
   }
 }

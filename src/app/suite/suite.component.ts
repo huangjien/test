@@ -1,21 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BaseComponent } from '../base.component';
 
 @Component({
   selector: 'app-suite',
   templateUrl: './suite.component.html',
   styleUrls: ['./suite.component.css']
 })
-export class SuiteComponent implements OnInit {
+export class SuiteComponent extends BaseComponent {
 
-  id: string;
-  constructor(private route: ActivatedRoute) { }
 
-  ngOnInit() {
-    // this.id = this.route.params['id'];
-    this.route.paramMap.subscribe(params => {
-      console.log(params);
-      this.id = params.get('id');
-    });
-  }
 }
