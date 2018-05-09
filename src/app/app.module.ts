@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import {
   MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatPaginatorModule,
   MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule,
@@ -24,7 +25,6 @@ import {
 } from '@okta/okta-angular';
 import { BaseComponent } from './base.component';
 import { AppComponent } from './app.component';
-import { SearchComponent } from './search/search.component';
 import { EventBusService } from './event-bus.service';
 import { Okta } from './okta.service';
 import { environment } from '../environments/environment';
@@ -34,7 +34,6 @@ import { UiComponent } from './ui/ui.component';
 import { DataComponent } from './data/data.component';
 import { EnvComponent } from './env/env.component';
 import { ResultComponent } from './result/result.component';
-import { DynamicComponent } from './dynamic/dynamic.component';
 import { DataService } from './data.service';
 import { SimpleViewComponent } from './simple-view/simple-view.component';
 import { SettingComponent } from './setting/setting.component';
@@ -94,14 +93,12 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent,
     SuiteComponent,
     CaseComponent,
     UiComponent,
     DataComponent,
     EnvComponent,
     ResultComponent,
-    DynamicComponent,
     SimpleViewComponent,
     DraggableDirective,
     DropTargetDirective,
@@ -112,7 +109,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    OktaAuthModule.initAuth(config),
+    OktaAuthModule.initAuth(config), FlexLayoutModule,
     BrowserModule, HttpClientModule, MatButtonModule, MatCheckboxModule,
     MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatPaginatorModule,
     MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule,

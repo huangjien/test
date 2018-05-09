@@ -2,6 +2,7 @@ import {Component, OnInit, Injectable} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {DataService} from './data.service';
+import Utils from './shared/utils';
 
 @Component({template: ``})
 export class BaseComponent implements OnInit {
@@ -32,13 +33,30 @@ export class BaseComponent implements OnInit {
                                 // console.log(res);
                                 this._data = res['data'];
                                 this.dataService.set(this.id, this._data);
+                                console.log('get data from backend', this._data);
+                                if (this._data !== undefined) {
+                                    this.extractFields();
+                                }
                             });
                     } else {
                         // console.log('get it from cache');
                         // console.log(savedData);
                         this._data = savedData;
+                        console.log('get data from cache', this._data);
+                        if (this._data !== undefined) {
+                            this.extractFields();
+                        }
                     }
                 }
             });
+    }
+
+    private extractFields() {
+        this.name = this._data['name'];
+        console.log(this._data['name']);
+        this.type = this._data['type'];
+        this.description = this._data['description'];
+        this.icon = Utils.getIcon(this.type);
+        console.log(this.name, this.type, this.description, this.icon);
     }
 }

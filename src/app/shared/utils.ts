@@ -18,6 +18,15 @@ export default class Utils {
         if (type === 'Result') {
             return 'chrome_reader_mode';
         }
+        if (type === 'Parameter') {
+            return 'keyboard_arrow_left';
+        }
+        if (type === 'Return') {
+            return 'keyboard_arrow_right';
+        }
+        if (type === 'Actions') {
+            return 'call_to_action';
+        }
         return 'assignment_late';
     }
 

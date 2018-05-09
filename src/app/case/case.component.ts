@@ -9,4 +9,6 @@ import { BaseComponent } from '../base.component';
 })
 export class CaseComponent extends BaseComponent {
 
+  panelOpenState = false;
+
 }
