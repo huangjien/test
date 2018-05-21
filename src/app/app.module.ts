@@ -41,6 +41,7 @@ import { DragService } from './drag-service';
 import { DraggableDirective } from './draggable.directive';
 import { DropTargetDirective } from './drop-target.directive';
 import { OutComponent } from './out/out.component';
+import './shared/utils';
 
 const config = {
   issuer: 'https://dev-897297.oktapreview.com/oauth2/default',

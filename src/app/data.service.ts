@@ -23,7 +23,8 @@ export class DataService {
   ping() {
     return this
       .http
-      .get(this.baseUrl + '/ping')
+      // .get(this.baseUrl + '/ping')
+      .get('http://localhost:32770/')
       .subscribe((response) => {
         console.log(response);
       });

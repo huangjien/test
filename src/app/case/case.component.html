@@ -1,60 +1,74 @@
+<mat-card hideToggle="true">
+  <mat-card-header>
+    <mat-card-title>
+      <mat-icon>{{getIcon('Case')}}</mat-icon>
+      <small [style.fontSize.px]="8">Case</small>
+    </mat-card-title>
+    <mat-card-content>
+      <b>{{_data.name}}</b>
+    </mat-card-content>
+  </mat-card-header>
 
-  <mat-card hideToggle="true">
-    <mat-card-header>
-      <mat-card-title>
-        <mat-icon >{{icon}}</mat-icon> &nbsp;
-        <small>{{type}}</small>
-      </mat-card-title>
-      <mat-card-content>
-        {{name}}
-      </mat-card-content>
-    </mat-card-header>
+  <div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+    <div fxFlex="50%">
+      
+        <fieldset disabled="{{editable}}" style="border: 0;">
+          <mat-form-field style="width: 60%">
+            <input matInput type="text" placeholder="Case Name" required minlength="3" [ngModel]="_data['name']" [ngModelOptions]="{standalone: true}"/>
+          </mat-form-field>
+          
+              <mat-slide-toggle [ngModel]="_data['disabled']" [ngModelOptions]="{standalone: true}">Disabled</mat-slide-toggle>
+          
+          <br/>
+          <mat-form-field style="width: 90%">
+            <textarea minRows="5" matInput type="text" placeholder="Description" required minlength="3" [ngModelOptions]="{standalone: true}" [(ngModel)]="_data.description" ></textarea>
+          </mat-form-field>
+        </fieldset>
+      
 
-    <div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
-      <div fxFlex="50%">
-        <span>{{description}}</span>
-      </div>
-      <div fxFlex="50%">
-        <mat-expansion-panel hideToggle="true" style="width: 100%">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <mat-icon >{{icon}}</mat-icon> &nbsp;
-              <small>{{type}}</small>
-            </mat-panel-title>
-            <mat-panel-description>
-              Input
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-
-          <pre>{{description}}</pre>
-          <mat-action-row>
-            <button mat-button color="primary" (click)="edit()">edit</button>
-          </mat-action-row>
-
-        </mat-expansion-panel>
-
-        <mat-expansion-panel hideToggle="true" style="width: 100%">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <mat-icon >{{icon}}</mat-icon> &nbsp;
-              <small>{{type}}</small>
-            </mat-panel-title>
-            <mat-panel-description>
-              Output
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-
-          <pre>{{description}}</pre>
-          <mat-action-row>
-            <button mat-button color="primary" (click)="edit()">edit</button>
-          </mat-action-row>
-        </mat-expansion-panel>
-      </div>
     </div>
-    <mat-card-actions>
-      <button mat-button color="primary" (click)="edit()">edit</button>
-    </mat-card-actions>
-  </mat-card>
+    <div fxFlex="50%">
+      <mat-expansion-panel hideToggle="true" style="width: 100%">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>{{getIcon('Parameter')}}</mat-icon>
+            <small [style.fontSize.px]="8">Parameters</small>
+          </mat-panel-title>
+          <mat-panel-description>
+            Input
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <pre>{{description}}</pre>
+        <mat-action-row>
+          <button mat-button color="primary" (click)="edit()">edit</button>
+        </mat-action-row>
+
+      </mat-expansion-panel>
+
+      <mat-expansion-panel hideToggle="true" style="width: 100%">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+
+            <mat-icon>{{getIcon('Return')}}</mat-icon>
+            <small [style.fontSize.px]="8">Return</small>
+          </mat-panel-title>
+          <mat-panel-description>
+            Output
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <pre>{{description}}</pre>
+        <mat-action-row>
+          <button mat-button color="primary" (click)="edit()">edit</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </div>
+  </div>
+  <mat-card-actions>
+    <button mat-button color="primary" (click)="edit()">edit</button>
+  </mat-card-actions>
+</mat-card>
 
 
 
@@ -63,8 +77,8 @@
   <mat-expansion-panel id="{{id}}" hideToggle="true" style="width: 100%">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        <mat-icon>{{icon}}</mat-icon> &nbsp;
-        <small>{{type}}</small>
+        <mat-icon>{{getIcon('Actions')}}</mat-icon>
+        <small [style.fontSize.px]="8">Actions</small>
       </mat-panel-title>
       <mat-panel-description>
         Actions

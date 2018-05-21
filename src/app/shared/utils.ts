@@ -1,3 +1,5 @@
+import { NgModule } from '@angular/core';
+
 export default class Utils {
     static getIcon(type: string): string {
         if (type === 'Case') {

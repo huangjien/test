@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BaseComponent } from '../base.component';
-
+import '../shared/utils';
 @Component({
   selector: 'app-case',
   templateUrl: './case.component.html',

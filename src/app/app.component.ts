@@ -159,6 +159,7 @@ export class AppComponent implements OnInit {
   }
 
   ping() {
+    console.log(this.dataService.ping());
     console.log(this.dataService.get('0010070000001'));
   }
 }

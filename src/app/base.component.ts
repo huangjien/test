@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {DataService} from './data.service';
 import Utils from './shared/utils';
 
+
 @Component({template: ``})
 export class BaseComponent implements OnInit {
 
@@ -12,7 +13,11 @@ export class BaseComponent implements OnInit {
     id : string;
     icon : string;
     description : string;
+    disabled: false;
+    versions: string[];
+    tags: string[];
     _data : any;
+    editable: false;
     constructor(public route : ActivatedRoute, private http : HttpClient, private dataService : DataService) {}
 
     ngOnInit() {
@@ -51,12 +56,16 @@ export class BaseComponent implements OnInit {
             });
     }
 
+    getIcon(type: string) {
+        return Utils.getIcon(type);
+    }
+
     private extractFields() {
         this.name = this._data['name'];
-        console.log(this._data['name']);
+        // console.log(this._data['name']);
         this.type = this._data['type'];
         this.description = this._data['description'];
         this.icon = Utils.getIcon(this.type);
-        console.log(this.name, this.type, this.description, this.icon);
+        // console.log(this.name, this.type, this.description, this.icon);
     }
 }
